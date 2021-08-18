@@ -2,7 +2,7 @@ import React from 'react';
 import Popover from '@material-ui/core/Popover';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import SignOut from './SignOut'
+import SignOut from './SignOut';
 
 export default function Actions() {
   const [anchorEl, setAnchorEl] = React.useState(null);

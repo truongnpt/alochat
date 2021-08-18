@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Actions from './Actions';
+import translation from '../static/translation';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,8 +24,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const { photoURL } = auth.currentUser
+  const currentLang = translation.find(t => t.key === 'vi');
+  const { photoURL } = auth.currentUser;
 
+  
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -37,7 +40,7 @@ export default function Header() {
           >
               <Avatar className="CurrentUser__avata" alt="Alo Chat" src={photoURL} />
               <Typography className={classes.title} variant="h6" noWrap>
-                Alo Chat
+                {currentLang.app_name}
             </Typography>
           </IconButton>
           <Actions />
